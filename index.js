@@ -23,6 +23,7 @@ app.get("/home", homeController.home);
 app.get("/", homeController.home);
 app.get("/bookList", homeController.booklist);
 app.get("/books/:bookID", homeController.books);
+app.get("/honesty", homeController.honesty);
 
 app.post("/", (req, res) => {
   console.log(req.body);
