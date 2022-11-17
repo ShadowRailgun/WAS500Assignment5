@@ -18,5 +18,5 @@ exports.booklist = (req, res, next) => {
 
 exports.books = (req, res, next) => {
     let paramsName = req.params.bookID;
-    res.render({ name: paramsName });
+    res.render(paramsName);
 };
