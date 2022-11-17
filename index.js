@@ -9,6 +9,7 @@ const express = require("express"),
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
+app.use(express.static("public"));
 app.use(layouts);
 app.use(
   express.urlencoded({
@@ -18,9 +19,10 @@ app.use(
 app.use(express.json());
 app.use(homeController.logRequestPaths);
 
-//app.get("/home", homeController.customReadFile("views/index.html"));
-//app.get("/bookList", homeController.sendReqParam);
-app.get("/books/:bookID", homeController.sendReqParam);
+app.get("/home", homeController.home);
+app.get("/", homeController.home);
+app.get("/bookList", homeController.booklist);
+app.get("/books/:bookID", homeController.books);
 
 app.post("/", (req, res) => {
   console.log(req.body);

@@ -1,4 +1,3 @@
-const fs = require("fs");
 exports.logRequestPaths = (req, res, next) => {
     console.log(`request made to: ${req.url}`);
     next();
@@ -9,11 +8,15 @@ exports.sendReqParam = (req, res, next) => {
     res.send(`This is the page for ${book}`);
 };
 
-exports.customReadFile = (file, res) => {
-    fs.readFile(`./${file}`, (errors, data) => {
-      if (errors) {
-        console.log("Error reading the file...");
-      }
-      res.end(data);
-    });
-  };
+exports.home = (req, res, next) => {
+    res.render("index");
+};
+
+exports.booklist = (req, res, next) => {
+    res.render("books");
+};
+
+exports.books = (req, res, next) => {
+    let paramsName = req.params.bookID;
+    res.render({ name: paramsName });
+};
