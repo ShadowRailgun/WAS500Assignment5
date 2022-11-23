@@ -42,7 +42,7 @@ app.post("/", (req, res) => {
 app.get(
   "/testbooks", booksController.getAllBooks, (req, res, next) =>{
     console.log(req.data);
-    res.render("testbooks", {testbooks: req.data})
+    res.render("testbooks", {Books: req.data})
   }
 );
 

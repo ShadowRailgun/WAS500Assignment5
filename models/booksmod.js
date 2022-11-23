@@ -5,4 +5,4 @@ const mongoose = require("mongoose"),
     description: String,
     img: String,
   });
-module.exports = mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Books", bookSchema);
