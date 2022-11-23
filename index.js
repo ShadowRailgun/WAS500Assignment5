@@ -7,12 +7,12 @@ const express = require("express"),
   const mongoose = require("mongoose")
 require("dotenv").config()
 const uri = process.env.ATLAS_URI;
-console.log(uri)
+//console.log(uri)
 mongoose.connect(uri,{useUnifiedTopology: true});
 const db = mongoose.connection;
-db.once("open", ()=> {
-  console.log("Success")
-})
+//db.once("open", ()=> {
+//  console.log("Success")
+//})
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
