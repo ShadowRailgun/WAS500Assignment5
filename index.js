@@ -3,12 +3,12 @@ const express = require("express"),
   errorController = require("./controllers/errorController"),
   homeController = require("./controllers/homeController"),
   layouts = require("express-ejs-layouts");
-
-  const mongoose = require("mongoose")
+const booksController = require("./controllers/booksController");
+const mongoose = require("mongoose")
 require("dotenv").config()
 const uri = process.env.ATLAS_URI;
 //console.log(uri)
-mongoose.connect(uri,{useUnifiedTopology: true});
+mongoose.connect(uri, { useUnifiedTopology: true });
 const db = mongoose.connection;
 //db.once("open", ()=> {
 //  console.log("Success")
@@ -38,6 +38,16 @@ app.post("/", (req, res) => {
   console.log(req.query);
   res.send("POST Successful!");
 });
+
+app.get(
+  "/testbooks", booksController.getAllBooks, (req, res, next) =>{
+    console.log(req.data);
+    res.render("testbooks", {testbooks: req.data})
+  }
+);
+
+app.get("/addbook", booksController.getBookLoadPage)
+app.post("/subscribe", booksController.saveBooks)
 
 app.use(errorController.logErrors);
 app.use(errorController.respondNoResourceFound);
