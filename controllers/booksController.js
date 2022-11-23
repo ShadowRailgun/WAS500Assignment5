@@ -28,7 +28,7 @@ exports.saveBooks = (req, res) => {
 exports.getbooks = (req, res, next) => {
     let paramsName = req.params.bookID;
     console.log(req.params)
-    Books.findOne({id: paramsName}, (error, book) => {
+    Books.findOne({page: paramsName}, (error, book) => {
         if (error) next(error);
         console.log(book)
         req.data = book;

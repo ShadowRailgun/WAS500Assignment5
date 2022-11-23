@@ -3,6 +3,7 @@ const mongoose = require("mongoose"),
     name: String,
     page: String,
     description: String,
+    author: String,
     img: String,
   });
 module.exports = mongoose.model("Books", bookSchema);
