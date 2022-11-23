@@ -4,7 +4,15 @@ const express = require("express"),
   homeController = require("./controllers/homeController"),
   layouts = require("express-ejs-layouts");
 
-
+  const mongoose = require("mongoose")
+require("dotenv").config()
+const uri = process.env.ATLAS_URI;
+console.log(uri)
+mongoose.connect(uri,{useUnifiedTopology: true});
+const db = mongoose.connection;
+db.once("open", ()=> {
+  console.log("Success")
+})
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
