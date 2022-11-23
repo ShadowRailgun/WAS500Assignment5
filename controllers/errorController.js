@@ -18,3 +18,9 @@ exports.respondInternalError = (error, req, res, next) => {
   res.status(errorCode);
   res.send(`${errorCode} | Sorry, our application is experiencing a problem!`);
 };
+
+exports.typeError = (req, res) => {
+  let errorCode = httpStatus.StatusCodes.NO_CONTENT;
+  res.status(errorCode);
+  res.send(`${errorCode} | The page does not exist!`);
+};

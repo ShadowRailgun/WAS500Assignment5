@@ -52,6 +52,7 @@ app.post("/subscribe", booksController.saveBooks)
 
 app.use(errorController.logErrors);
 app.use(errorController.respondNoResourceFound);
+app.use(errorController.typeError);
 app.use(errorController.respondInternalError);
 
 app.listen(app.get("port"), () => {
