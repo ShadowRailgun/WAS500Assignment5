@@ -12,11 +12,6 @@ exports.home = (req, res, next) => {
     res.render("index");
 };
 
-exports.books = (req, res, next) => {
-    let paramsName = req.params.bookID;
-    res.render(paramsName);
-};
-
 exports.honesty = (req, res, next) => {
     res.render("honesty");
 };

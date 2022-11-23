@@ -29,7 +29,9 @@ app.use(homeController.logRequestPaths);
 
 app.get("/home", homeController.home);
 app.get("/", homeController.home);
-app.get("/books/:bookID", homeController.books);
+app.get("/books/:bookID", booksController.getbooks, (req, res) =>{
+  res.render("bookpage", {s: req.data})
+});
 app.get("/honesty", homeController.honesty);
 
 app.post("/", (req, res) => {
@@ -39,8 +41,8 @@ app.post("/", (req, res) => {
 });
 
 app.get(
-  "/booklist", booksController.getAllBooks, (req, res, next) =>{
-    console.log(req.data);
+  "/booklist", booksController.getAllBooks, (req, res) =>{
+    //console.log(req.data);
     res.render("booklist", {Books: req.data})
   }
 );

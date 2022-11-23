@@ -24,3 +24,16 @@ exports.saveBooks = (req, res) => {
     console.log("Success")
   });
 };
+
+exports.getbooks = (req, res, next) => {
+    let paramsName = req.params.bookID;
+    console.log(req.params)
+    Books.findOne({id: paramsName}, (error, book) => {
+        if (error) next(error);
+        console.log(book)
+        req.data = book;
+        next();
+      });
+    
+    //res.render("bookpage");
+};
